@@ -37,8 +37,6 @@ class SqlQueryExecutor:
     def __return_conn(self) -> psycopg2.extensions.connection:
         if self.__is_connection_valid():
             return self.connection
-        if self.connection is not None and self.connection.closed == 0:
-            self.connection.close()
 
         self.connection = psycopg2.connect(**self.__db_properties)
         return self.connection
