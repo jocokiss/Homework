@@ -5,24 +5,24 @@ services:
   app:
     build: .
     ports:
-      - "5001:5000"  # Expose Flask app on port 5001
+      - "5001:5000"
     environment:
-      - DB_HOST=db  # Database host name (Docker service name)
+      - DB_HOST=db
       - DB_USER=crypto_user
       - DB_PASSWORD=crypto_pass
       - DB_NAME=crypto_db
     depends_on:
-      - db  # Ensure the db container starts before the app
+      - db
 
   # Define the PostgreSQL service
   db:
-    image: postgres:latest  # Use the latest official PostgreSQL image
+    image: postgres:latest
     environment:
-      POSTGRES_DB: crypto_db  # Set the database name
-      POSTGRES_USER: crypto_user  # Set the database user
-      POSTGRES_PASSWORD: crypto_pass  # Set the database password
+      POSTGRES_DB: crypto_db
+      POSTGRES_USER: crypto_user
+      POSTGRES_PASSWORD: crypto_pass
     volumes:
-      - postgres_data:/var/lib/postgresql/data  # Persist data in a volume
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:  # Define a Docker volume to persist database data
+  postgres_data:
