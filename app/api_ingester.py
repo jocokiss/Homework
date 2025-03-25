@@ -1,3 +1,5 @@
+from typing import Union
+
 import requests
 
 from app.query_executor import SqlQueryExecutor
@@ -34,7 +36,7 @@ class ApiIngest(LoggingHelper):
         """)
 
     @staticmethod
-    def __fetch_data(api_url: str, params: dict = None) -> dict | list:
+    def __fetch_data(api_url: str, params: dict = None) -> Union[dict, list]:
         """Fetch data from the CoinGecko API."""
         response = requests.get(api_url, params=params)
         if response.status_code == 200:

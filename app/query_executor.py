@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 import psycopg2
 
@@ -35,7 +35,7 @@ class SqlQueryExecutor(LoggingHelper):
         self.connection = psycopg2.connect(**self.__db_properties)
         return self.connection
 
-    def execute_query(self, query: str, params: Optional[tuple] = None) -> list[tuple] | None:
+    def execute_query(self, query: str, params: Optional[tuple] = None) -> Union[list[tuple], None]:
         """Execute a query.
 
         Args:
