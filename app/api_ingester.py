@@ -1,8 +1,8 @@
 import requests
 
+from app.query_executor import SqlQueryExecutor
 from config import FETCH_PARAMS, DB_CONFIG, COINGECKO_API_URL
 from logging_helper import LoggingHelper
-from query_executor import SqlQueryExecutor
 
 
 class ApiIngest(LoggingHelper):
@@ -14,7 +14,9 @@ class ApiIngest(LoggingHelper):
     def __create_db(self) -> None:
         """Create the crypto_data table if it doesn't already exist."""
         self.query_executor.execute_query("""
-            CREATE TABLE IF NOT EXISTS crypto_data (
+            DROP TABLE IF EXISTS crypto_data;
+            
+            CREATE TABLE crypto_data (
                 id SERIAL PRIMARY KEY,
                 name TEXT NOT NULL,
                 symbol TEXT NOT NULL,
@@ -22,6 +24,7 @@ class ApiIngest(LoggingHelper):
                 price_change_percentage_24h NUMERIC NOT NULL,
                 market_cap NUMERIC NOT NULL,
                 market_cap_rank INTEGER NOT NULL,
+                market_cap_change_percentage_24h INTEGER NOT NULL,
                 ath NUMERIC NOT NULL,
                 atl NUMERIC NOT NULL,
                 high_24h NUMERIC NOT NULL,
@@ -51,12 +54,13 @@ class ApiIngest(LoggingHelper):
                     price_change_percentage_24h,
                     market_cap,
                     market_cap_rank,
+                    market_cap_change_percentage_24h,
                     ath,
                     atl,
                     high_24h,
                     low_24h
                 ) 
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """,
                 (
                     entry["name"],
@@ -65,6 +69,7 @@ class ApiIngest(LoggingHelper):
                     entry["price_change_percentage_24h"],
                     entry["market_cap"],
                     entry["market_cap_rank"],
+                    entry["market_cap_change_percentage_24h"],
                     entry["ath"],
                     entry["atl"],
                     entry["high_24h"],
@@ -74,7 +79,7 @@ class ApiIngest(LoggingHelper):
 
     def run(self):
         """Fetch data from the API and save it to the database."""
-        if data := self.__fetch_data(FETCH_PARAMS, COINGECKO_API_URL):
+        if data := self.__fetch_data(COINGECKO_API_URL, FETCH_PARAMS):
             self.__save_to_db(data)
         else:
             self.logger.info("No data was fetched from the API.")

@@ -26,7 +26,7 @@ class SqlQueryExecutor(LoggingHelper):
         """Check if the existing connection is open and to the correct database."""
         return (self.connection is not None and
                 self.connection.closed == 0 and
-                self.connection.info.dbname == self.__db_properties["database"])
+                self.connection.info.dbname == self.__db_properties["dbname"])
 
     def __return_conn(self) -> psycopg2.extensions.connection:
         if self.__is_connection_valid():
