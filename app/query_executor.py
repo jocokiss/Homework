@@ -2,24 +2,16 @@ from typing import Optional, Union
 
 import psycopg2
 
+from config import DB_CONFIG
 from logging_helper import LoggingHelper
 
 
 class SqlQueryExecutor(LoggingHelper):
-    """A class for executing SQL queries using psycopg2.
+    """A class for executing SQL queries using psycopg2."""
 
-    Attributes
-        connection (psycopg2.connect): The database connection.
-        cursor (psycopg2.cursor): The database cursor.
-    """
-
-    def __init__(self, db_properties: dict):
-        """Initialize the SqlQueryExecutor instance.
-
-        Args:
-            db_properties: properties for the database connection.
-        """
-        self.__db_properties = db_properties
+    def __init__(self):
+        """Initialize the SqlQueryExecutor instance."""
+        self.__db_properties = DB_CONFIG
         self.connection = None
 
     def __is_connection_valid(self) -> bool:

@@ -10,7 +10,7 @@ from logging_helper import LoggingHelper
 class ApiIngest(LoggingHelper):
     def __init__(self):
         # Initialize the query executor with DB configuration
-        self.query_executor = SqlQueryExecutor(DB_CONFIG)
+        self.query_executor = SqlQueryExecutor()
         self.__create_db()
 
     def __create_db(self) -> None:

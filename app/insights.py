@@ -1,3 +1,4 @@
+"""Module containing functions for handling insights."""
 from config import DB_CONFIG
 from app.query_executor import SqlQueryExecutor
 from logging_helper import LoggingHelper
@@ -5,7 +6,7 @@ from logging_helper import LoggingHelper
 
 class Insights(LoggingHelper):
     def __init__(self):
-        self.query_executor = SqlQueryExecutor(DB_CONFIG)
+        self.query_executor = SqlQueryExecutor()
 
     def get_biggest_gainer(self) -> dict:
         """Return the cryptocurrency with the largest 24h price increase."""
@@ -57,7 +58,8 @@ class Insights(LoggingHelper):
             }
         return {}
 
-    def get_volatility_to_market_cap_ratio(self) -> dict:
+    def get_top_volatility_to_market_cap_ratio(self) -> dict:
+        """Return the most volatile cryptocurrency in relation to market cap."""
         query = """
                     SELECT 
                         name, 
@@ -72,7 +74,7 @@ class Insights(LoggingHelper):
                 """
 
         if result := self.query_executor.execute_query(query):
-            return {"name": result[0][0], "volatility_to_market_cap_ratio": result[0][1]}
+            return {"name": result[0][0], "top_volatility_to_market_cap_ratio": result[0][1]}
         return {}
 
     def get_biggest_market_cap_growth(self) -> dict:
@@ -90,5 +92,3 @@ class Insights(LoggingHelper):
                 "market_cap_change_percentage": result[0][1]
             }
         return {}
-
-
