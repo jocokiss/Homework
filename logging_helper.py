@@ -1,3 +1,4 @@
+"""Module for unified logging throughout the project."""
 import logging
 
 

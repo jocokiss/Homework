@@ -8,10 +8,10 @@ WORKDIR /app
 COPY . /app
 
 # Step 4: Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt --verbose
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Step 5: Make port 5000 available to the world outside this container
 EXPOSE 5000
 
-# Step 7: Run the Flask app
+# Step 7: Run the app
 CMD ["python", "main.py"]

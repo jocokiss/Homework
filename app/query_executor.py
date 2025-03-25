@@ -1,3 +1,4 @@
+"""Module containing the query executor class, which helps to run queries."""
 from typing import Optional, Union
 
 import psycopg2
@@ -21,6 +22,7 @@ class SqlQueryExecutor(LoggingHelper):
                 self.connection.info.dbname == self.__db_properties["dbname"])
 
     def __return_conn(self) -> psycopg2.extensions.connection:
+        """If the connection is already open, return it. Otherwise, create it."""
         if self.__is_connection_valid():
             return self.connection
 

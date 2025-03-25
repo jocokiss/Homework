@@ -22,16 +22,14 @@ Ez az insight azt mutatja meg, hogy az elmúlt 24 órában melyik kriptovaluta p
 
 ![graph.png](graph.png)
 
-# Értékelés
+# Hogyan futtathatod a projektet:
 
-Nem igazán foglalkoztam még hasonló projekttel, de nagyon élveztem a megoldás elkészítését. Úgy gondolom, hogy sikerült remekül kitalálni a feladatot: pont ad egy éles irányt, de egyáltalán nem túl szigorú vagy korlátozó. Nagyjából eltöltöttem vele 6 órát, úgyhogy ezen a ponton befejezem. Valószinüleg nem leszek a következő Warren Buffett ezekből az insightoktól, de nézzétek el nekem, nem vagyok közgazdász.
+A feladatkiírásból feltételezem, hogy a docker, docker-compose telepítve van, ha mégsem akkor szükséges lesz letölteni őket!
 
-#### Hogyan futtathatod a projektet:
-
-A projektet a root könyvtárból az alábbi command-dal tudjátok futtatni:
+A projektet a root könyvtárból az alábbi paranccsal tudjátok futtatni:
 
 ```bash
-docker build -t cryptoapp . && docker run -p 5001:5000 cryptoapp
+docker-compose build && docker-compose up
 ```
 Ha minden jól ment, akkor a megoldás elérhető itt:
 

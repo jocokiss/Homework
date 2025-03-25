@@ -1,4 +1,4 @@
-# crypto_price_analyzer
+"""Module used for running the application"""
 from app.api_ingester import ApiIngest
 from app.views import app
 

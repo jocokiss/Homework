@@ -1,3 +1,4 @@
+"""Module for ingesting data from API."""
 from typing import Union
 
 import requests
@@ -14,7 +15,7 @@ class ApiIngest(LoggingHelper):
         self.__create_db()
 
     def __create_db(self) -> None:
-        """Create the crypto_data table if it doesn't already exist."""
+        """Create the crypto_data table. If it exists, it will be dropped and recreated."""
         self.query_executor.execute_query("""
             DROP TABLE IF EXISTS crypto_data;
             

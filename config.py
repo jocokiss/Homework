@@ -14,6 +14,6 @@ DB_CONFIG = {
     "dbname": "crypto_db",
     "user": "crypto_user",
     "password": "crypto_pass",
-    "host": "host.docker.internal",
+    "host": "db",
     "port": 5432
 }
