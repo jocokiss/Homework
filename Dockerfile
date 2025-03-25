@@ -11,10 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt --verbose
 
 # Step 5: Make port 5000 available to the world outside this container
-EXPOSE 5001
-
-# Step 6: Define environment variable (optional, but a good practice)
-ENV FLASK_APP=main.py
+EXPOSE 5000
 
 # Step 7: Run the Flask app
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5001"]
+CMD ["python", "main.py"]

@@ -72,7 +72,7 @@ class Insights(LoggingHelper):
                 """
 
         if result := self.query_executor.execute_query(query):
-            return {"name": result[0][0], "volatility to market cap ratio": result[0][1]}
+            return {"name": result[0][0], "volatility_to_market_cap_ratio": result[0][1]}
         return {}
 
     def get_biggest_market_cap_growth(self) -> dict:
@@ -87,7 +87,7 @@ class Insights(LoggingHelper):
         if result := self.query_executor.execute_query(query):
             return {
                 "name": result[0][0],
-                "market_cap_change": result[0][1]
+                "market_cap_change_percentage": result[0][1]
             }
         return {}
 

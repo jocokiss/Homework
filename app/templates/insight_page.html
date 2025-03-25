@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ insight_title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .insight-item {
+            margin: 10px 0;
+        }
+        .back-link {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .key {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{{ insight_title }}</h1>
+
+        <!-- Iterate over all key-value pairs -->
+        {% for key, value in insight.items() %}
+            <div class="insight-item">
+                <span class="key">{{ key.replace('_', ' ').title() }}:</span> {{ value }}
+            </div>
+        {% endfor %}
+
+        <div class="back-link">
+            <a href="{{ url_for('homepage') }}">⬅️ Back to Homepage</a>
+        </div>
+    </div>
+</body>
+
+</html>

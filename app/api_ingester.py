@@ -81,7 +81,10 @@ class ApiIngest(LoggingHelper):
 
     def run(self):
         """Fetch data from the API and save it to the database."""
+        self.logger.info("Starting API Ingestion")
         if data := self.__fetch_data(COINGECKO_API_URL, FETCH_PARAMS):
             self.__save_to_db(data)
+            self.logger.info("Ingestion completed.")
+
         else:
             self.logger.info("No data was fetched from the API.")
