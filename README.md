@@ -7,7 +7,7 @@ A **PostgreSQL** választása mellett döntöttem, mert az adat struktúrája j�
 A megoldásom három fő lépésből áll:
 1. **Adatgyűjtés**: Az API segítségével begyűjtöm a legfrissebb kriptovaluta adatokat, így mindig naprakész információkat kapunk.
 2. **Adattárolás**: Az összegyűjtött adatokat egy PostgreSQL adatbázisban tárolom, ami lehetővé teszi a gyors keresést és a hatékony adatkezelést.
-3. **Adatfeldolgozás és publikálás**: Az adatokat elemzem, hogy olyan érdekes betekintéseket nyújtsak, mint a legnagyobb nyerteseik és veszteseik, a volatilitás vagy a piaci kapitalizáció növekedése. Ezeket az eredményeket webes felületen vagy API-n keresztül jelenítem meg.
+3. **Adatfeldolgozás és publikálás**: Az adatokat elemzem, hogy olyan érdekes betekintéseket nyújtsak, mint a legnagyobb nyerteseik és veszteseik, a volatilitás vagy a piaci kapitalizáció növekedése. Ezeket az eredményeket webes felületen keresztül jelenítem meg.
 ### 1. Top Gainer & Top Loser
 Itt azt figyelhetjük meg, hogy az elmúlt 24 órában melyik cryptocurrency értéke nőtt a legtöbbet és melyiké zuhant a legnagyobbat. Ez segít azonosítani a legjobb és legrosszabb teljesítményt nyújtó valutákat az adott időszakban.
 
